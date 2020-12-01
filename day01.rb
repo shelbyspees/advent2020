@@ -18,12 +18,17 @@ end
 
 test_numbers = [1721, 979, 366, 299, 675, 1456]
 
-# O(n^2) solution
+# O(n^3) solution
 numbers.each do |x|
   numbers.each do |y|
-    unless y == x
-      if (x + y == 2020)
-        return x * y
+    unless x == y
+      numbers.each do |z|
+        unless (x || y) == z
+          if (x + y + z == 2020)
+            puts x * y * z
+            return
+          end     
+        end
       end
     end
   end
